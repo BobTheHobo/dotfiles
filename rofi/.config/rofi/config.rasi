@@ -1,0 +1,39 @@
+configuration{
+	// Modes enabled and which ones combined for combi
+    modi: "combi,drun,window,filebrowser";
+	combi-modes: "window,drun,run";
+
+	// Options
+    terminal: "xfce4-terminal";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    sidebar-mode: true;
+	scroll-method: 0;
+
+	// Mouse support
+	hover-select: true;
+
+	// Icon and title settings
+    show-icons: true;
+    icon-theme: "Oranchelo";
+    drun-display-format: "{icon} {name}  [<span foreground="gray" weight='light' size='small'><i>{exec}</i></span>]";
+    display-combi: " 🖥️  All ";
+    display-drun: " 🏃  drun ";
+    display-window: " 🪟  Window";
+	display-filebrowser: " 📁 Files";
+
+	//Keybinds, tried to emulate vim using alt+ whatever vim keybind
+	kb-clear-line: "Control+w,Control+c";
+	kb-move-front: "Control+a,Alt+i";
+	kb-move-end: "Control+e,Alt+a";
+	kb-move-word-forward: "Alt+f,Alt+w,Control+Right";
+	kb-remove-word-back: "Control+Alt+h,Control+BackSpace,Alt+d";
+	kb-element-next: "Tab,Alt+j,Super+j";
+	kb-element-prev: "ISO_Left_Tab,Alt+k,Super+k";
+	kb-mode-next: "Alt+Tab,Control+Tab,Shift+Right,Alt+l,Super+l";
+	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+Shift+Tab,Alt+h,Super+h";
+	kb-cancel: "Escape,Control+g,Control+bracketleft,Super+d";
+}
+
+@theme "gruvbox-dark-hard.rasi"
