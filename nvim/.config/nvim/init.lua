@@ -127,6 +127,15 @@ require('lazy').setup({
     end,
   },
 
+  -- {
+  --   "vague2k/vague.nvim",
+  --   config = function()
+  --     require("vague").setup({
+  --       -- optional configuration here
+  --     })
+  --   end
+  -- },
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
