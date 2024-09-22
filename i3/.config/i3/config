@@ -11,6 +11,11 @@
 
 set $mod Mod4
 
+# picom for smoother display stuff?
+exec --no-startup-id picom
+# Use nitrogen for backgrounds
+exec --no-startup-id nitrogen --restore
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # Switch font to Agave Nerd Font Mono
@@ -86,9 +91,14 @@ bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+w kill
 
 # open xfce4 popup app menu with mod+d
-bindsym $mod+d exec --no-startup-id xfce4-popup-whiskermenu
-# bindsym $mod+Shift+d exec --no-startup-id "rofi -modi drun,run -show drun"
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id xfce4-popup-whiskermenu
+
+# use rofi
+bindsym $mod+d exec rofi -show combi
+
+# backup xfce4 or dmenu
+bindsym $mod+Shift+d exec --no-startup-id xfce4-popup-whiskermenu
+# bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
@@ -271,5 +281,3 @@ gaps outer 5px
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 smart_gaps inverse_outer
 
-# Use nitrogen for backgrounds
-exec --no-startup-id nitrogen --restore
