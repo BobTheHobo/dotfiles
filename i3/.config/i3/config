@@ -13,8 +13,8 @@ set $mod Mod4
 
 # picom for smoother display and stuff
 exec --no-startup-id picom
-# Use nitrogen for backgrounds
-exec --no-startup-id nitrogen --restore
+# Use feh for backgrounds
+exec --no-startup-id feh --bg-scale ~/backgrounds/gruv.jpg
 
 # polybar setup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
