@@ -1,6 +1,6 @@
 configuration{
 	// Modes enabled and which ones combined for combi
-    modi: "combi,drun,window,filebrowser";
+    modi: "drun,combi,window,filebrowser";
 	combi-modes: "window,drun,run";
 
 	// Options
