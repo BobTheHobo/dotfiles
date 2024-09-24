@@ -106,35 +106,37 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    opts = {
-    },
-    config = function()
-      vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
-      require("onedark").setup {
-        style = 'deep',
-        transparent = false,
-
-        --toggle theme style--
-        toggle_style_key = "<leader>pp",
-        toggle_style_list = { 'light', 'deep' },
-
-      }
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-
   -- {
-  --   "vague2k/vague.nvim",
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   opts = {
+  --   },
   --   config = function()
-  --     require("vague").setup({
-  --       -- optional configuration here
-  --     })
-  --   end
+  --     vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
+  --     require("onedark").setup {
+  --       style = 'deep',
+  --       transparent = false,
+  --
+  --       --toggle theme style--
+  --       toggle_style_key = "<leader>pp",
+  --       toggle_style_list = { 'deep', 'light', 'deep' },
+  --
+  --     }
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
   -- },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        terminal_colors = true,
+        transparent_mode = true,
+      })
+      vim.cmd.colorscheme 'gruvbox'
+    end
+  },
 
   {
     -- Set lualine as statusline
@@ -231,21 +233,15 @@ require('lazy').setup({
 
     },
   },
+  {
+    import = "plugins"
+  },
+  -- require 'plugins.autoformat',
+  -- require 'plugins.debug',
+  -- require 'plugins.alpha',
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
-
-
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  -- { import = 'plugins' },
 }, {})
 
 -- Options --
