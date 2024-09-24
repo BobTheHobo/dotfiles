@@ -75,6 +75,10 @@ local servers = {
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   jdtls = {},
+  asm_lsp = {
+    command = { "asm-lsp" },
+    filetypes = { "asm", "s", "S" }
+  },
 
   lua_ls = {
     Lua = {
