@@ -11,8 +11,8 @@
 
 set $mod Mod4
 
-# picom for smoother display and stuff
-exec --no-startup-id picom -b
+# fastcompmgr as compositor
+exec --no-startup-id fastcompmgr
 # Use feh for backgrounds
 exec --no-startup-id feh --bg-scale ~/backgrounds/gruv.jpg
 
@@ -59,13 +59,13 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec wezterm
 
 # open thunar
 bindsym $mod+Shift+Return exec thunar
 
 # open htop
-bindsym $mod+Shift+p exec --no-startup-id xfce4-terminal -e htop
+bindsym $mod+Shift+p exec --no-startup-id wezterm -e htop
 
 # open display settings
 bindsym $mod+p exec xfce4-display-settings --minimal
