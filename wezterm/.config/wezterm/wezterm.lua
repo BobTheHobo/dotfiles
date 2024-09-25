@@ -10,7 +10,7 @@ config = {
 
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
-	window_background_opacity = 0.5,
+	window_background_opacity = 0.9,
 
 	-- Disable ligatures
 	harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
@@ -20,7 +20,25 @@ config = {
 		right = 3,
 		top = 1,
 		bottom = 0,
-	}
+	},
+
+	inactive_pane_hsb = {
+		saturation = 0.9,
+		brightness = 0.8,
+	},
+
+	-- background = {
+	-- 	{
+	-- 		source = {
+	-- 			File = '/home/viet/backgrounds/gruv.jpg',
+	-- 		},
+	-- 		horizontal_align = "Center",
+	-- 		vertical_align = "Middle",
+	-- 		height = "1080",
+	-- 		width = "1920",
+	-- 		opacity = 0.5,
+	-- 	}
+	-- },
 }
 
 return config
