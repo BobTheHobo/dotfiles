@@ -30,7 +30,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xfce4-notifyd
 
 # GNOME policykit that comes with xfce
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 ## Use xfce4-panel if you don't want to use polybar
 # exec --no-startup-id xfce4-panel --disable-wm-check &
@@ -51,7 +51,7 @@ font pango: Agave Nerd Font Mono Regular
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # Just let xfce manage it
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -103,15 +103,22 @@ bindsym Print exec xfce4-screenshooter
 #   -s  File path or directory where the screenshot will be saved
 #   -w  Take a screenshot of the active window
 
-# kill focused window
-bindsym $mod+Shift+w kill
+# copyQ
+bindsym $mod+Shift+v exec copyq menu
+for_window [class="copyq"] floating enable
 
 # use rofi
 bindsym $mod+d exec rofi -show combi
 
-# backup xfce4 or dmenu
+# backup xfce4 or dmenui
 bindsym $mod+Shift+d exec --no-startup-id xfce4-popup-whiskermenu
 # bindsym $mod+Shift+d exec --no-startup-id dmenu_run
+
+# Focus doesn't follow mouse
+focus_follows_mouse no
+
+# kill focused window
+bindsym $mod+q kill
 
 # change focus
 bindsym $mod+h focus left
@@ -209,15 +216,15 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# Use xfce4-session-logout if on using xfce-session-manager
+# Use xfce4-session-logout if using xfce-session-manager
 # bindsym $mod+Shift+e exec --no-startup-id xfce4-session-logout 
 
 # Exit settings and keybinds for i3 alone
 mode "Exit" {
-        bindsym s exec systemctl suspend
-        bindsym l exec i3-msg exit
-        bindsym r exec systemctl -i reboot
-        bindsym d exec systemctl -i poweroff
+        bindsym s exec systemctl suspend && pkill -15 nagbar
+        bindsym l exec i3-msg exit && pkill -15 nagbar
+        bindsym r exec systemctl -i reboot && pkill -15 nagbar
+        bindsym d exec systemctl -i poweroff && pkill -15 nagbar
         bindsym e mode "default"; exec pkill -15 nagbar
         bindsym Escape mode "default"; exec pkill -15 nagbar
         bindsym Ctrl+c mode "default"; exec pkill -15 nagbar
