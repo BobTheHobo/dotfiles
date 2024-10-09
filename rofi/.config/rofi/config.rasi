@@ -18,8 +18,8 @@ configuration{
     show-icons: true;
     icon-theme: "Oranchelo";
     drun-display-format: "{icon} {name}  [<span foreground="gray" weight='light' size='small'><i>{exec}</i></span>]";
-    display-combi: " 🖥️  All ";
     display-drun: " 🏃  drun ";
+    display-combi: " 🖥️  All ";
     display-window: " 🪟  Window";
 	display-filebrowser: " 📁 Files";
 
