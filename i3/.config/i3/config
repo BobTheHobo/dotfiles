@@ -50,7 +50,7 @@ font pango: Agave Nerd Font Mono Regular
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i ~/backgrounds/gruv1080.png -c 000000 --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i ~/backgrounds/gruv1080.png -c 000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -220,7 +220,7 @@ bindsym $mod+Shift+r restart
 
 # Exit settings and keybinds for i3 alone
 mode "Exit" {
-        bindsym s mode "default"; exec systemctl suspend && pkill -15 nagbar
+        bindsym s mode "default"; exec i3lock -i ~/backgrounds/gruv1080.png -c 000000 && systemctl suspend && pkill -15 nagbar
         bindsym l mode "default"; exec i3lock -i ~/backgrounds/gruv1080.png -c 000000 && pkill -15 nagbar
         bindsym o mode "default"; exec i3-msg exit && pkill -15 nagbar
         bindsym r mode "default"; exec systemctl -i reboot && pkill -15 nagbar
