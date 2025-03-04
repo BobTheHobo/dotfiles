@@ -24,6 +24,7 @@ return {
     ---@type wk.Spec
     spec = {
       { "<C-S-K>", desc = "Show signature help" },
+      { "<S-K>", desc = "Show information" },
     },
 
     -- show a warning when issues were detected with your mappings
@@ -80,7 +81,7 @@ return {
       -- Additional vim.wo and vim.bo options
       bo = {},
       wo = {
-        -- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+        winblend = 30, -- value between 0-100 0 for fully opaque and 100 for fully transparent
       },
     },
 
@@ -107,7 +108,7 @@ return {
     sort = { "local", "order", "group", "alphanum", "mod" },
 
     ---@type number|fun(node: wk.Node):boolean?
-    expand = 0, -- expand groups when <= n mappings
+    expand = 1, -- expand groups when <= n mappings
     -- expand = function(node)
     --   return not node.desc -- expand all nodes without a description
     -- end,
@@ -155,10 +156,10 @@ return {
         Down = " ",
         Left = " ",
         Right = " ",
-        C = "󰘴 ",
-        M = "󰘵 ",
-        D = "󰘳 ",
-        S = "󰘶 ",
+        C = "󰘴 ", -- ctrl
+        M = "󰘵 ", -- alt
+        D = "󰘳 ", -- command
+        S = "󰘶 ", -- shift
         CR = "󰌑 ",
         Esc = "󱊷 ",
         ScrollWheelDown = "󱕐 ",

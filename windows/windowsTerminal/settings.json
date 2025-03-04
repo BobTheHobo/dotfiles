@@ -11,6 +11,14 @@
             "id": "User.globalSummon.51A3D78C"
         },
         {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
+        },
+        {
             "command": "unbound",
             "keys": "ctrl+c"
         },
@@ -49,23 +57,24 @@
         {
             "command": 
             {
-                "action": "copy",
-                "singleLine": false
+                "action": "sendInput",
+                "input": "\u001b[13;2u"
             },
-            "id": "User.copy.644BA8F2"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste"
+            "id": "User.sendInput.8882FD6D",
+            "keys": "shift+enter"
         },
         {
             "command": 
             {
-                "action": "adjustFontSize",
-                "delta": -1
+                "action": "sendInput",
+                "input": "\u001b[13;5u"
             },
-            "id": "User.adjustFontSize.E2698FAA",
-            "keys": "ctrl+shift+minus"
+            "id": "User.sendInput.F8A79DCB",
+            "keys": "ctrl+enter"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
         },
         {
             "command": 
@@ -76,6 +85,15 @@
             },
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
+        },
+        {
+            "command": 
+            {
+                "action": "adjustFontSize",
+                "delta": -1
+            },
+            "id": "User.adjustFontSize.E2698FAA",
+            "keys": "ctrl+shift+minus"
         },
         {
             "command": "find",
@@ -93,10 +111,11 @@
         }
     ],
     "alwaysShowNotificationIcon": true,
+    "alwaysShowTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-    "disableAnimations": true,
+    "disableAnimations": false,
     "minimizeToNotificationArea": true,
     "newTabMenu": 
     [
@@ -230,7 +249,9 @@
             "yellow": "#C18301"
         }
     ],
+    "showTabsInTitlebar": false,
+    "tabWidthMode": "titleLength",
     "theme": "system",
     "themes": [],
-    "useAcrylicInTabRow": false
+    "useAcrylicInTabRow": true
 }
