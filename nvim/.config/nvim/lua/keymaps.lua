@@ -22,12 +22,12 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Move lines up and down by using <Alt-k> and <Alt-j> respectively
-vim.keymap.set('n', '<A-j>', ':m +1<CR>==', { silent = true, desc = "Moves a line down" })
-vim.keymap.set('n', '<A-k>', ':m -2<CR>==', { silent = true, desc = "Moves a line up" })
-vim.keymap.set('i', '<A-j>', '<Esc>:m +1<CR>==gi', { silent = true, desc = "Moves a line down (insert mode)" })
-vim.keymap.set('i', '<A-k>', '<Esc>:m -2<CR>==gi', { silent = true, desc = "Moves a line up (insert mode)" })
-vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { silent = true, desc = "Moves a line down (visual mode)" })
-vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { silent = true, desc = "Moves a line up (visual mode)" })
+vim.keymap.set('n', '<A-J>', ':m +1<CR>==', { silent = true, desc = "Moves a line down" })
+vim.keymap.set('n', '<A-K>', ':m -2<CR>==', { silent = true, desc = "Moves a line up" })
+vim.keymap.set('i', '<A-J>', '<Esc>:m +1<CR>==gi', { silent = true, desc = "Moves a line down (insert mode)" })
+vim.keymap.set('i', '<A-K>', '<Esc>:m -2<CR>==gi', { silent = true, desc = "Moves a line up (insert mode)" })
+vim.keymap.set('v', '<A-J>', ":m '>+1<CR>gv=gv", { silent = true, desc = "Moves a line down (visual mode)" })
+vim.keymap.set('v', '<A-K>', ":m '<-2<CR>gv=gv", { silent = true, desc = "Moves a line up (visual mode)" })
 
 -- Insert blank lines --
 vim.keymap.set('n', '<leader>o', 'mao<Esc>`a', { silent = true, desc = "Inserts blank line below" })
