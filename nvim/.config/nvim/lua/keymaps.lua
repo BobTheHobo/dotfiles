@@ -68,6 +68,7 @@ vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap 
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- tabs
+-- just use tmux for tabs
 vim.keymap.set("n", "<A-n>", ":tabnew <CR>")
 vim.keymap.set("n", "<A-w>", ":tabclose <CR>")
 vim.keymap.set("n", "<A-i>", ":tabprevious <CR>", { silent = true })
@@ -76,5 +77,3 @@ vim.keymap.set("n", "<A-Left>", ":tabprevious <CR>", { silent = true })
 vim.keymap.set("n", "<A-Right>", ":tabnext <CR>", { silent = true })
 vim.keymap.set("n", "<A-1>", ":tabfirst <CR>", { silent = true })
 vim.keymap.set("n", "<A-0>", ":tablast <CR>", { silent = true })
-
--- just use tmux for tabs
