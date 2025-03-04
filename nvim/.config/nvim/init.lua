@@ -53,6 +53,15 @@ require('lazy').setup({
     },
   },
   {
+    -- Autocomplete for git
+    "petertriho/cmp-git",
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    opts = {},
+    init = function()
+      table.insert(require("cmp").get_config().sources, { name = "git" })
+    end
+  },
+  {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
