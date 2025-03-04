@@ -92,37 +92,37 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   opts = {
-  --   },
-  --   config = function()
-  --     vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
-  --     require("onedark").setup {
-  --       style = 'deep',
-  --       transparent = false,
-  --
-  --       --toggle theme style--
-  --       toggle_style_key = "<leader>pp",
-  --       toggle_style_list = { 'deep', 'light', 'deep' },
-  --
-  --     }
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
   {
-    "ellisonleao/gruvbox.nvim",
+  --   -- Theme inspired by Atom
+    'navarasu/onedark.nvim',
     priority = 1000,
+    opts = {
+    },
     config = function()
-      require("gruvbox").setup({
-        terminal_colors = true,
-        transparent_mode = true,
-      })
-      vim.cmd.colorscheme 'gruvbox'
-    end
+      vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
+      require("onedark").setup {
+        style = 'deep',
+        transparent = false,
+
+        --toggle theme style--
+        toggle_style_key = "<leader>pp",
+        toggle_style_list = { 'deep', 'light', 'deep' },
+
+      }
+      vim.cmd.colorscheme 'onedark'
+    end,
   },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     require("gruvbox").setup({
+  --       terminal_colors = true,
+  --       transparent_mode = true,
+  --     })
+  --     vim.cmd.colorscheme 'gruvbox'
+  --   end
+  -- },
 
   {
     -- Set lualine as statusline
