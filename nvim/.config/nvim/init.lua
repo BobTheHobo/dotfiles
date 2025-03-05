@@ -184,15 +184,14 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   {
     import = "plugins"
   },
-  -- require 'plugins.autoformat',
-  -- require 'plugins.debug',
-  -- require 'plugins.alpha',
 
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'plugins' },
+  -- LSP --
+  require 'lsp-setup'
+
 }, {})
 
 -- Options --
