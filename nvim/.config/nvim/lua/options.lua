@@ -2,7 +2,7 @@
 -- See `:help vim.o`
 
 -- winbar (shows you what file is open at the top of the window)
-vim.o.winbar = "%=%m %f %y" -- Uses same items as statusline (%= -> right align, %m -> shows modified, %f -> show file)
+vim.o.winbar = "%=%{ObsessionStatus()} %m %f %y" -- Uses same items as statusline (%= -> right align, %m -> shows modified, %f -> show file)
 
 -- tab settings
 vim.o.softtabstop = 2     -- how many columns pressing or deleting tab is worth
