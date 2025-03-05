@@ -186,27 +186,27 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. Available keys are:
---  - cmd (table): Override the default command used to start the server
---  - filetypes (table): Override the default list of associated filetypes for the server
---  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
---  - settings (table): Override the default settings passed when initializing the server.
---        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-local servers = {
-  clangd = {},
-  -- gopls = {},
-  pyright = {},
-  rust_analyzer = {},
-  ts_ls = {}, --[[ typescript ]]
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
-  jdtls = {},
-  asm_lsp = {
-    command = { "asm-lsp" },
-    filetypes = { "asm", "s", "S" }
-  },
+      -- Enable the following language servers
+      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      --
+      --  Add any additional override configuration in the following tables. Available keys are:
+      --  - cmd (table): Override the default command used to start the server
+      --  - filetypes (table): Override the default list of associated filetypes for the server
+      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+      --  - settings (table): Override the default settings passed when initializing the server.
+      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local servers = {
+        clangd = {},
+        -- gopls = {},
+        pyright = {},
+        rust_analyzer = {},
+        ts_ls = {}, --[[ typescript ]]
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        jdtls = {},
+        asm_lsp = {
+          command = { "asm-lsp" },
+          filetypes = { "asm", "s", "S" }
+        },
 
         lua_ls = {
           -- cmd = { ... },
@@ -264,6 +264,49 @@ local servers = {
           end,
         },
       }
+
+      -- Ocaml setup
+      require('lspconfig')['ocamllsp'].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
+
+      -- Omnisharp setup
+      require('lspconfig').omnisharp.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        -- cmd = { "dotnet", "/home/viet/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+        cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp" },
+        handlers = {
+          ["textDocument/definition"] = require("omnisharp_extended").handler,
+        },
+        -- Enables support for reading code style, naming convention and analyzer settings from .editorconfig.
+        enable_editorconfig_support = true,
+        -- If true, MSBuild project system will only load projects for files that
+        -- were opened in the editor. This setting is useful for big C# codebases
+        -- and allows for faster initialization of code navigation features only
+        -- for projects that are relevant to code that is being edited. With this
+        -- setting enabled OmniSharp may load fewer projects and may thus display
+        -- incomplete reference lists for symbols.
+        enable_ms_build_load_projects_on_demand = false,
+        -- Enables support for roslyn analyzers, code fixes and rulesets.
+        enable_roslyn_analysers = true,
+        -- Enables support for showing unimported types and unimported extension
+        -- methods in completion lists. When committed, the appropriate using
+        -- directive will be added at the top of the current file. This option can
+        -- have a negative impact on initial completion responsiveness,
+        -- particularly for the first few completion sessions after opening a
+        -- solution.
+        enable_import_completion = true,
+        -- Specifies whether 'using' directives should be grouped and sorted during document formatting.
+        organize_imports_on_format = true,
+        enable_decompilation_support = true,
+        -- Only run analyzers against open files when 'enableRoslynAnalyzers' is true
+        analyze_open_documents_only = false,
+        -- Specifies whether to include preview versions of the .NET SDK when determining which version to use for project loading.
+        sdk_include_prereleases = true,
+        filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
+      })
     end,
   },
   -- Typescript lsp
@@ -273,46 +316,3 @@ local servers = {
     opts = {},
   },
 }
-
--- Ocaml setup
-require('lspconfig')['ocamllsp'].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
--- Omnisharp setup
-require('lspconfig').omnisharp.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- cmd = { "dotnet", "/home/viet/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
-  cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp" },
-  handlers = {
-    ["textDocument/definition"] = require("omnisharp_extended").handler,
-  },
-  -- Enables support for reading code style, naming convention and analyzer settings from .editorconfig.
-  enable_editorconfig_support = true,
-  -- If true, MSBuild project system will only load projects for files that
-  -- were opened in the editor. This setting is useful for big C# codebases
-  -- and allows for faster initialization of code navigation features only
-  -- for projects that are relevant to code that is being edited. With this
-  -- setting enabled OmniSharp may load fewer projects and may thus display
-  -- incomplete reference lists for symbols.
-  enable_ms_build_load_projects_on_demand = false,
-  -- Enables support for roslyn analyzers, code fixes and rulesets.
-  enable_roslyn_analysers = true,
-  -- Enables support for showing unimported types and unimported extension
-  -- methods in completion lists. When committed, the appropriate using
-  -- directive will be added at the top of the current file. This option can
-  -- have a negative impact on initial completion responsiveness,
-  -- particularly for the first few completion sessions after opening a
-  -- solution.
-  enable_import_completion = true,
-  -- Specifies whether 'using' directives should be grouped and sorted during document formatting.
-  organize_imports_on_format = true,
-  enable_decompilation_support = true,
-  -- Only run analyzers against open files when 'enableRoslynAnalyzers' is true
-  analyze_open_documents_only = false,
-  -- Specifies whether to include preview versions of the .NET SDK when determining which version to use for project loading.
-  sdk_include_prereleases = true,
-  filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
-})
