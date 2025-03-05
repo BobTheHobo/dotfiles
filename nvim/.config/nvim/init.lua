@@ -180,10 +180,14 @@ require('lazy').setup({
     import = "plugins"
   },
 
+
   -- LSP --
   require 'lsp-setup'
 
-}, {})
+},
+  -- Stop lazy from notifying every time a change is made
+  { change_detection = { notify = false } }
+)
 
 -- Options --
 require 'options'
