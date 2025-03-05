@@ -200,7 +200,6 @@ return {
         -- gopls = {},
         pyright = {},
         rust_analyzer = {},
-        ts_ls = {}, --[[ typescript ]]
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         jdtls = {},
         asm_lsp = {
