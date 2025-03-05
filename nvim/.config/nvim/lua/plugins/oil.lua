@@ -22,9 +22,9 @@ return {
             -- See :help oil-columns
             columns = {
                 "icon",
-                "permissions",
-                "size",
-                "mtime",
+                -- "permissions",
+                -- "size",
+                -- "mtime",
             },
 
              -- Buffer-local options to use for oil buffers
@@ -123,6 +123,10 @@ return {
                     -- see :help oil-columns to see which columns are sortable
                     { "type", "asc" },
                     { "name", "asc" },
+                    { "size", "asc" },
+                    { "mtime", "asc" },
+                    { "ctime", "asc" },
+                    { "atime", "asc" },
                 },
             },
             float = {
