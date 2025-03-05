@@ -2,14 +2,15 @@
 -- See `:help vim.o`
 
 -- winbar (shows you what file is open at the top of the window)
-vim.o.winbar = "%=%m %f %y" -- Uses same items as statusline (%= -> right align, %m -> shows modified, %f -> show file)
+vim.o.winbar = "%=%{ObsessionStatus()} %m %f %y" -- Uses same items as statusline (%= -> right align, %m -> shows modified, %f -> show file)
 
 -- tab settings
-vim.o.softtabstop = 4     -- how many columns pressing or deleting tab is worth
-vim.o.tabstop = 4         -- how many columns of whitespace \t (tab) character is worth
-vim.o.shiftwidth = 4      -- how many columns of whitespace a "level of indentation" (> or < keystrokes) is worth
+vim.o.softtabstop = 2     -- how many columns pressing or deleting tab is worth
+vim.o.tabstop = 2         -- how many columns of whitespace \t (tab) character is worth
+vim.o.shiftwidth = 2      -- how many columns of whitespace a "level of indentation" (> or < keystrokes) is worth
 vim.o.autoindent = true;  -- automatically indent newlines
 vim.o.smartindent = true; -- works with C-like braces
+vim.o.expandtab = true    -- expands tab into spaces
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -78,9 +79,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- Basically sets tabstop=2, softtabstop=2, shiftwidth=2, expandtab (Expands tabs to spaces)
--- vim: ts=2 sts=2 sw=2 et
--- vim: ts=2 sts=2 sw=2 et
--- vim: ts=2 sts=2 sw=2 et

@@ -4,6 +4,7 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
+require("cmp_git").setup()
 
 cmp.setup {
   snippet = {
@@ -46,5 +47,19 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'emoji' },
+    { name = 'git' },
   },
 }
+
+-- Autocompletes @ and # when using Octo for github
+vim.cmd('autocmd FileType * lua setKeybinds()')
+function setKeybinds()
+    local fileTy = vim.api.nvim_buf_get_option(0, "filetype")
+    local opts = { prefix = '<localleader>', buffer = 0 }
+
+    if fileTy == 'octo' then
+      vim.keymap.set("i", "@", "@<C-x><C-o>", { silent = true, buffer = true })
+      vim.keymap.set("i", "#", "#<C-x><C-o>", { silent = true, buffer = true })
+    end
+end

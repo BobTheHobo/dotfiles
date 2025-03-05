@@ -23,23 +23,17 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
+  -- LSP Plugins
   {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      "Hoffs/omnisharp-extended-lsp.nvim", -- For omnisharp
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
     },
   },
 
@@ -58,14 +52,14 @@ require('lazy').setup({
       -- 'rafamadriz/friendly-snippets',
     },
   },
-
-  -- Useful plugin to show you pending keybinds.
   {
-    'folke/which-key.nvim',
+    -- Autocomplete for git
+    "petertriho/cmp-git",
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    opts = {},
     init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
+      table.insert(require("cmp").get_config().sources, { name = "git" })
+    end
   },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -107,61 +101,43 @@ require('lazy').setup({
     },
   },
 
-  -- {
+  {
   --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   opts = {
-  --   },
-  --   config = function()
-  --     vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
-  --     require("onedark").setup {
-  --       style = 'deep',
-  --       transparent = false,
-  --
-  --       --toggle theme style--
-  --       toggle_style_key = "<leader>pp",
-  --       toggle_style_list = { 'deep', 'light', 'deep' },
-  --
-  --     }
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-  {
-    "ellisonleao/gruvbox.nvim",
+    'navarasu/onedark.nvim',
     priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        terminal_colors = true,
-        transparent_mode = true,
-      })
-      vim.cmd.colorscheme 'gruvbox'
-    end
-  },
-
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
-      options = {
-        icons_enabled = true,
-        theme = 'onedark',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-      },
     },
-  },
+    config = function()
+      -- vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
+      require("onedark").setup {
+        style = 'warmer',
+        transparent = true,
 
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = 'ibl',
-    opts = {},
+        --toggle theme style--
+        toggle_style_key = "<leader>pp",
+        toggle_style_list = { 'warmer', 'light' },
+        -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
+
+        -- Lualine options --
+        lualine = {
+          transparent = false, -- lualine center bar transparency
+        },
+
+      }
+      vim.cmd.colorscheme 'onedark'
+    end,
   },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     require("gruvbox").setup({
+  --       terminal_colors = true,
+  --       transparent_mode = true,
+  --     })
+  --     vim.cmd.colorscheme 'gruvbox'
+  --   end
+  -- },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -196,54 +172,21 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    -- build = ':TSUpdate',
+    build = ':TSUpdate',
   },
 
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    -- lazy = true,
-    -- ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    event = {
-      -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-      -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-      "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md",
-      -- "BufReadPre path/to/my-vault/**.md",
-      "BufNewFile path/to/my-vault/**.md",
-    },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "personal",
-          -- path = "C:\\Users\\Viet\\Documents\\Viet's Vault",
-          path = "/home/viet/Documents/Viet's Vault",
-        },
-      },
-      -- Completion of wiki links, local markdown links, and tags using nvim-cmp.
-      completion = {
-        -- Set to false to disable completion.
-        nvim_cmp = true,
-        -- Trigger completion at 2 chars.
-        min_chars = 2,
-      },
-
-    },
-  },
+  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   {
     import = "plugins"
   },
-  -- require 'plugins.autoformat',
-  -- require 'plugins.debug',
-  -- require 'plugins.alpha',
 
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'plugins' },
-}, {})
+},
+  -- Stop lazy from notifying every time a change is made
+  { change_detection = { notify = false } }
+)
+
+-- LSP --
+require 'lsp-setup'
 
 -- Options --
 require 'options'
@@ -256,9 +199,6 @@ require 'telescope-setup'
 
 -- Treesitter --
 require 'treesitter-setup'
-
--- Setup lsp --
-require 'lsp-setup'
 
 -- nvim-cmp --
 require 'cmp-setup'

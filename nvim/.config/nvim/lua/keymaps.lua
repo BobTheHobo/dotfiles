@@ -21,14 +21,6 @@ vim.keymap.set('n', '/', ':set hlsearch<CR>/', { silent = true }) -- Turns on se
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Move lines up and down by using <Alt-k> and <Alt-j> respectively
-vim.keymap.set('n', '<A-j>', ':m +1<CR>==', { silent = true, desc = "Moves a line down" })
-vim.keymap.set('n', '<A-k>', ':m -2<CR>==', { silent = true, desc = "Moves a line up" })
-vim.keymap.set('i', '<A-j>', '<Esc>:m +1<CR>==gi', { silent = true, desc = "Moves a line down (insert mode)" })
-vim.keymap.set('i', '<A-k>', '<Esc>:m -2<CR>==gi', { silent = true, desc = "Moves a line up (insert mode)" })
-vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { silent = true, desc = "Moves a line down (visual mode)" })
-vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { silent = true, desc = "Moves a line up (visual mode)" })
-
 -- Insert blank lines --
 vim.keymap.set('n', '<leader>o', 'mao<Esc>`a', { silent = true, desc = "Inserts blank line below" })
 vim.keymap.set('n', '<leader>O', 'maO<Esc>`a', { silent = true, desc = "Inserts blank line above" })
@@ -41,6 +33,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- Terminal
 vim.keymap.set("n", "<leader>ft", "<C-W>s15<C-W>_:terminal<cr>", { desc = "Terminal (root dir)" })
+vim.keymap.set("n", "<leader>fT", "<cmd>tabnew<cr><C-W>s15<C-W>_:terminal<cr>", { desc = "Terminal in new tab (root dir)" })
 vim.keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Terminal remappings
@@ -75,11 +68,11 @@ vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap 
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- tabs
+-- just use tmux for tabs
 vim.keymap.set("n", "<A-n>", ":tabnew <CR>")
-vim.keymap.set("n", "<A-t>", ":vsplit <CR>")
 vim.keymap.set("n", "<A-w>", ":tabclose <CR>")
-vim.keymap.set("n", "<A-h>", ":tabprevious <CR>", { silent = true })
-vim.keymap.set("n", "<A-l>", ":tabnext <CR>", { silent = true })
+vim.keymap.set("n", "<A-i>", ":tabprevious <CR>", { silent = true })
+vim.keymap.set("n", "<A-o>", ":tabnext <CR>", { silent = true })
 vim.keymap.set("n", "<A-Left>", ":tabprevious <CR>", { silent = true })
 vim.keymap.set("n", "<A-Right>", ":tabnext <CR>", { silent = true })
 vim.keymap.set("n", "<A-1>", ":tabfirst <CR>", { silent = true })
