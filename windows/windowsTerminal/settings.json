@@ -55,6 +55,10 @@
             "keys": "alt+space"
         },
         {
+            "command": "unbound",
+            "keys": "ctrl+shift+f"
+        },
+        {
             "command": 
             {
                 "action": "sendInput",
@@ -97,8 +101,7 @@
         },
         {
             "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": "User.find"
         },
         {
             "command": 
@@ -108,6 +111,15 @@
             },
             "id": "User.adjustFontSize.E04D5229",
             "keys": "ctrl+shift+plus"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u0013f"
+            },
+            "id": "User.sendInput.FA8E7954",
+            "keys": "ctrl+f"
         }
     ],
     "alwaysShowNotificationIcon": true,
@@ -116,7 +128,7 @@
     "copyOnSelect": false,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "disableAnimations": false,
-    "minimizeToNotificationArea": true,
+    "minimizeToNotificationArea": false,
     "newTabMenu": 
     [
         {
