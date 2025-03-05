@@ -108,14 +108,20 @@ require('lazy').setup({
     opts = {
     },
     config = function()
-      vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
+      -- vim.o.background = "light" -- this line is required to set onedark default theme to light (see #34 @ github)
       require("onedark").setup {
-        style = 'deep',
-        transparent = false,
+        style = 'warmer',
+        transparent = true,
 
         --toggle theme style--
         toggle_style_key = "<leader>pp",
-        toggle_style_list = { 'deep', 'light', 'deep' },
+        toggle_style_list = { 'warmer', 'light' },
+        -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
+
+        -- Lualine options --
+        lualine = {
+          transparent = true, -- lualine center bar transparency
+        },
 
       }
       vim.cmd.colorscheme 'onedark'

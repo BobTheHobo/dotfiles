@@ -5,7 +5,7 @@ return {
   opts = {
 
     ---@type false | "classic" | "modern" | "helix"
-    preset = "modern",
+    preset = "classic",
 
     -- Delay before showing the popup. Can be a number or a function that returns a number.
     ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
@@ -81,7 +81,7 @@ return {
       -- Additional vim.wo and vim.bo options
       bo = {},
       wo = {
-        winblend = 30, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+        winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
       },
     },
 
@@ -105,7 +105,7 @@ return {
     --- * mod: special modifier keys last
     --- * manual: the order the mappings were added
     --- * case: lower-case first
-    sort = { "local", "order", "group", "alphanum", "mod" },
+    sort = { "case", "local", "order", "group", "alphanum", "mod" },
 
     ---@type number|fun(node: wk.Node):boolean?
     expand = 1, -- expand groups when <= n mappings
