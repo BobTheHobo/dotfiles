@@ -65,15 +65,6 @@ return {
 
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
--- - WARNING In mode `n`, <gb> overlaps with <gbc>:
---   - <gb>: Comment toggle blockwise
---   - <gbc>: Comment toggle current block
--- - WARNING In mode `n`, <gc> overlaps with <gco>, <gcO>, <gcc>, <gcA>:
---   - <gc>: Comment toggle linewise
---   - <gco>: Comment insert below
---   - <gcO>: Comment insert above
---   - <gcc>: Comment toggle current line
---   - <gcA>: Comment insert end of line
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
