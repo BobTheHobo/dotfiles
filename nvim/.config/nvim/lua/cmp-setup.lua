@@ -2,10 +2,35 @@
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local npairs = require("nvim-autopairs")
+local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+
+-- snippets --
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
-require("cmp_git").setup()
 
+-- Git completion --
+require("cmp_git").setup({})
+
+-- autopairs --
+-- Auto open function on { <CR>
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
+-- autopairs with treesitter --
+npairs.setup({
+  check_ts = true,
+  ts_config = {
+    lua = {'string'},-- it will not add a pair on that treesitter node
+    javascript = {'template_string'},
+    typescript = {'template_string'},
+    java = false,-- don't check treesitter on java
+  }
+})
+
+-- cmp --
 cmp.setup {
   snippet = {
     expand = function(args)
