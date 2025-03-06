@@ -4,7 +4,15 @@ local function setup()
   local wk = require("which-key")
 
   -- Required
-  harpoon:setup({})
+  harpoon:setup({
+    settings = {
+      sync_on_toggle = true,
+      sync_on_ui_close = true,
+      key = function()
+        return vim.loop.cwd()
+      end,
+    }
+  }) -- Save automatically on harpoon close
 
   -- Highlight current file
   harpoon:extend(harpoon_extensions.builtins.highlight_current_file())

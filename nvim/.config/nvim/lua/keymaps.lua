@@ -11,7 +11,7 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Automatically source vimrc
-vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>', { desc = 'Source vimrc' })
+-- vim.keymap.set('n', '<leader>sv', ':source $MYVIMRC<CR>', { desc = 'Source vimrc' })
 
 -- Toggle search highlighting
 vim.keymap.set('n', '<F4>', ':set hls!<CR>', { desc = 'Toggle search highlighting', silent = true })

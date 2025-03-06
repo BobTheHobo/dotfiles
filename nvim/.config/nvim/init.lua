@@ -174,6 +174,10 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  { -- Better repeats
+    "tpope/vim-repeat"
+  },
+
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   {
     import = "plugins"
