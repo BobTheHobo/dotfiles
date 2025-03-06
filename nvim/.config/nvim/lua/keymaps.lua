@@ -65,15 +65,12 @@ vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
-vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- tabs
 -- just use tmux for tabs
-vim.keymap.set("n", "<A-n>", ":tabnew <CR>")
-vim.keymap.set("n", "<A-w>", ":tabclose <CR>")
-vim.keymap.set("n", "<A-i>", ":tabprevious <CR>", { silent = true })
-vim.keymap.set("n", "<A-o>", ":tabnext <CR>", { silent = true })
-vim.keymap.set("n", "<A-Left>", ":tabprevious <CR>", { silent = true })
-vim.keymap.set("n", "<A-Right>", ":tabnext <CR>", { silent = true })
-vim.keymap.set("n", "<A-1>", ":tabfirst <CR>", { silent = true })
-vim.keymap.set("n", "<A-0>", ":tablast <CR>", { silent = true })
+vim.keymap.set("n", "<leader>tt", ":tabnew <CR>", { desc = "New [t]ab"})
+vim.keymap.set("n", "<leader>tx", ":tabclose <CR>", { desc = "Close tab"})
+vim.keymap.set("n", "<leader>te", ":tabnext <CR>", { desc = "N[e]xt tab"})
+vim.keymap.set("n", "<leader>tr", ":tabprevious <CR>", { desc = "P[r]evious tab"})
+vim.keymap.set("n", "<leader>t1", ":tabfirst <CR>", { desc = "First tab"})
+vim.keymap.set("n", "<leader>t0", ":tablast <CR>", { desc = "Last tab"})

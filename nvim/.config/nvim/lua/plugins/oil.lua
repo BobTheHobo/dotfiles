@@ -67,7 +67,7 @@ return {
                 ["<CR>"] = "actions.select",
                 ["<leader>|"] = { "actions.select", opts = { vertical = true } },
                 ["<leader>-"] = { "actions.select", opts = { horizontal = true } },
-                ["<C-t>"] = { "actions.select", opts = { tab = true } },
+                ["<leader>tt"] = { "actions.select", opts = { tab = true } },
                 ["<C-p>"] = "actions.preview",
                 ["<C-c>"] = "actions.close",
                 ["<C-l>"] = "actions.refresh",
