@@ -1,17 +1,8 @@
-vim.keymap.set({ "n", "x" }, "s", "<Nop>")
+vim.keymap.set({ "n", "x" }, "s", "<Nop>") -- Unbind default substitute
 
 return {
   "echasnovski/mini.surround",
-  opts = { 
-    -- Add custom surroundings to be used on top of builtin ones. For more
-    -- information with examples, see `:h MiniSurround.config`.
-    custom_surroundings = {
-      ['n'] = {
-        input = { '*' },
-        output = { left = '\n', right = '\n' }
-      }
-    },
-
+  opts = {
     highlight_duration = 2000,
 
     -- Module mappings. Use `''` (empty string) to disable one.
@@ -26,5 +17,6 @@ return {
       suffix_last = 'l', -- Suffix to search with "prev" method
       suffix_next = 'n', -- Suffix to search with "next" method
     },
+    respect_selection_type = true
   },
 }
