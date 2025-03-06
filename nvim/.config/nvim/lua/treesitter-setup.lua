@@ -17,10 +17,10 @@ vim.defer_fn(function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<s-space>',
-        node_incremental = '<s-space>',
+        init_selection = '<S-CR>',
+        node_incremental = '<S-CR>',
         scope_incremental = '<c-s>',
-        node_decremental = '<M-space>',
+        node_decremental = '<M-space>',       
       },
     },
     textobjects = {

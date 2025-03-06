@@ -9,6 +9,10 @@ return {
       theme = 'onedark',
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
+      disabled_filetypes = {
+        'NvimTree', 'undotree',
+        winbar = {'aerial'}
+      },
       always_show_tabline = false
     },
     -- lualine at the bottom --
@@ -36,7 +40,7 @@ return {
     -- bar that appears above every buffer --
     winbar = {
       lualine_a = {{'filename', separator = {right = ''}, file_status = true, color = {bg = 'orange'}, }},
-      lualine_b = {},
+      lualine_b = {{'aerial', sep = '' }},
       lualine_c = {},
       lualine_x = {"%{ObsessionStatus()}"},
       lualine_y = {'%m %f %y'},
@@ -61,7 +65,6 @@ return {
       lualine_y = {},
       lualine_z = {}
     },
-
     extensions = {"aerial"},
   },
 }

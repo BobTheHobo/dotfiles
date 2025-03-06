@@ -33,7 +33,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- Terminal
 vim.keymap.set("n", "<leader>ft", "<C-W>s15<C-W>_:terminal<cr>", { desc = "Terminal (root dir)" })
-vim.keymap.set("n", "<leader>fT", "<cmd>tabnew<cr><C-W>s15<C-W>_:terminal<cr>", { desc = "Terminal in new tab (root dir)" })
+vim.keymap.set("n", "<leader>fT", "<cmd>tabnew<cr>:terminal<cr>", { desc = "Terminal in new tab (root dir)" })
 vim.keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Terminal remappings
