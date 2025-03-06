@@ -9,7 +9,9 @@ return {
       theme = 'onedark',
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
+      always_show_tabline = false
     },
+    -- lualine at the bottom --
     sections = {
       lualine_a = {'mode'},
       lualine_b = {'branch', 'diff'},
@@ -30,6 +32,8 @@ return {
       lualine_y = {},
       lualine_z = {}
     },
+
+    -- bar that appears above every buffer --
     winbar = {
       lualine_a = {{'filename', separator = {right = ''}, file_status = true, color = {bg = 'orange'}, }},
       lualine_b = {},
@@ -46,6 +50,18 @@ return {
       lualine_y = {'%m %f %y'},
       lualine_z = {},
     },
+
+    -- bar that appears to show tabs
+
+    tabline = {
+      lualine_a = {{'tabs', mode = 2, use_mode_colors = true}},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {}
+    },
+
     extensions = {"aerial"},
   },
 }
