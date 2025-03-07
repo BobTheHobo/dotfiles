@@ -9,6 +9,8 @@ function _G.get_oil_winbar()
     end
 end
 
+
+
 return {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
