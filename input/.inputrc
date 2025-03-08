@@ -1,4 +1,13 @@
+# enable vim and show mode
 set editing-mode vi
 set show-mode-in-prompt on
 set vi-ins-mode-string "+"
 set vi-cmd-mode-string ":"
+
+set completion-ignore-case on
+set visible-stats on
+set show-all-if-ambiguous on
+
+#
+"\C-g": "echo hello"
+Control-g: "> output"

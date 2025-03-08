@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+
 # turn on vi mode
 set -o vi
 
@@ -10,6 +11,11 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+# Autocomplete
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+bind '"\e[Z":menu-complete-backward'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -64,9 +70,9 @@ PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)';
 
 if [ "$color_prompt" = yes ]; then
     # oldPS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\e[38;2;244;148;72m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$( [[ -n "$PS1_CMD1" ]] && echo " ($PS1_CMD1)")\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\e[38;2;244;148;72m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$( [[ -n "$PS1_CMD1" ]] && echo "($PS1_CMD1)")\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$( [[ -n "$ps1_CMD1" ]] && echo " ($PS1_CMD1)")\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$( [[ -n "$ps1_CMD1" ]] && echo "($PS1_CMD1)")\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -74,7 +80,7 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
     # PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w$( [[ -n "$PS1_CMD1" ]] && echo " ($PS1_CMD1)")\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w$( [[ -n "$PS1_CMD1" ]] && echo "($PS1_CMD1)")\a\]$PS1"
     ;;
 *)
     ;;
@@ -84,16 +90,27 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
+# control-g runs tmux-sessionizer
+if [ -x ~/bin/tmux-sessionizer ]; then
+    bind '"\C-g":"tmux-sessionizer\n"'
+fi
+# tmux-windowizer script
+if [ -x ~/bin/tmux-windowizer ]; then
+    tw() { # tw $1 $* to run it
+	tmux-windowizer $1 $*
+    }
+fi
+
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -127,3 +144,9 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Nvim paths...
+export PATH="$PATH:/opt/nvim/"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+# Path for scripts
+export PATH="$PATH:/bin"
