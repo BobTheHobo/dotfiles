@@ -150,4 +150,11 @@ export PATH="$PATH:/opt/nvim/"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Path for scripts
 export PATH="$PATH:/bin"
-eval "$(/bin/brew shellenv)"
+
+if command -v /home/linuxbrew/.linuxbrew/bin/brew &>/dev/null; then 
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif command -v /bin/brew &>/dev/null; then
+    eval "$(/bin/brew shellenv)"
+else
+    echo "Homebrew is not installed."
+fi
