@@ -11,6 +11,7 @@ I can probably automate this someday...
 - WSL
   - gh (Github CLI)
   - stow
+  - fzf
 - CaskaydiaMono Nerd Font (Install on Windows)
   - (Can replace with Nerd font of your choice)
 
@@ -44,7 +45,15 @@ stow tmux
 tmux
 ```
 
+#### Install TPM and plugins
+
+1. Clone [TPM](https://github.com/tmux-plugins/tpm) into `~/dotfiles/.tmux/plugins`
+2. Install plugins by opening `tmux` and running `<prefix>I`
+3. Source tmux: `source ~/dotfiles/.tmux.conf` or run `<prefix>r`
+
 ### Neovim
+
+Neovim >= 0.10 is required for some plugins to work.
 
 ```shell
 cd dotfiles
