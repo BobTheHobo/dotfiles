@@ -52,14 +52,14 @@ local function my_on_attach(bufnr)
   -- Recipe courtesy of @mkalinski @alex-courtis
   -- Changes statusline for tree windows
   -- Disabled b/c lualine has extension for nvim-tree
-  -- api.events.subscribe(api.events.Event.TreeOpen, function()
-  --   local tree_winid = api.tree.winid()
-  --
-  --   if tree_winid ~= nil then
-  --     vim.api.nvim_set_option_value('statusline', '%t', {win = tree_winid})
-  --     vim.api.nvim_set_option_value('winbar', ' ', {win = tree_winid})
-  --   end
-  -- end)
+  api.events.subscribe(api.events.Event.TreeOpen, function()
+    local tree_winid = api.tree.winid()
+
+    if tree_winid ~= nil then
+      vim.api.nvim_set_option_value('statusline', '%t', {win = tree_winid})
+      vim.api.nvim_set_option_value('winbar', ' ', {win = tree_winid})
+    end
+  end)
 
 end
 

@@ -76,7 +76,7 @@ return {
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode \'Action', { 'n', 'x' })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -185,6 +185,7 @@ return {
         clangd = {},
         -- gopls = {},
         pyright = {},
+        bashls = {},
         rust_analyzer = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         jdtls = {},
@@ -211,6 +212,7 @@ return {
           settings = {
             -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
             workingDirectories = { mode = "auto" },
+            format = auto_format,
           },
         },
         -- Typescript is included at the bottom
@@ -250,6 +252,21 @@ return {
         },
       }
     end,
+    setup = {
+      eslint = function() -- Eslint Autoformat
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          callback = function(event)
+            local client = vim.lsp.get_clients({ bufnr = event.buf, name = "eslint" })[1]
+            if client then
+              local diag = vim.diagnostic.get(event.buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+              if #diag > 0 then
+                vim.cmd("EslintFixAll")
+              end
+            end
+          end,
+        })
+      end,
+    },
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
@@ -269,9 +286,14 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
+    opts = {
+      tsserver_max_memory = 5096,
+      complete_function_calls = true,
+      include_completions_with_insert_text = true,
+    },
   },
   { -- Translate typescript errors
-    'dmmulroy/ts-error-translator.nvim'
+    'dmmulroy/ts-error-translator.nvim',
+    opts = {}
   }
 }

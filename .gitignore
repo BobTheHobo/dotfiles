@@ -3,3 +3,6 @@ tmux/.tmux/plugins/*
 
 # except a .gitkeep so git will keep the folder structure
 !tmux/.tmux/plugins/.gitkeep
+
+# env
+.env
