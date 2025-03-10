@@ -1,11 +1,8 @@
 -- Useful plugin to show you pending keybinds.
 return {
   'folke/which-key.nvim',
-  event = "VeryLazy",
+  event = 'VimEnter', -- Sets the loading event to 'VimEnter'
   opts = {
-
-    ---@type false | "classic" | "modern" | "helix"
-    preset = "classic",
 
     -- Delay before showing the popup. Can be a number or a function that returns a number.
     ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
@@ -13,19 +10,68 @@ return {
       return ctx.plugin and 0 or 200
     end,
 
+    icons = {
+      -- set icon mappings to true if you have a Nerd Font
+      mappings = vim.g.have_nerd_font,
+      -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+      -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
+      keys = vim.g.have_nerd_font and {} or {
+        Up = '<Up> ',
+        Down = '<Down> ',
+        Left = '<Left> ',
+        Right = '<Right> ',
+        C = '<C-…> ',
+        M = '<M-…> ',
+        D = '<D-…> ',
+        S = '<S-…> ',
+        CR = '<CR> ',
+        Esc = '<Esc> ',
+        ScrollWheelDown = '<ScrollWheelDown> ',
+        ScrollWheelUp = '<ScrollWheelUp> ',
+        NL = '<NL> ',
+        BS = '<BS> ',
+        Space = '<Space> ',
+        Tab = '<Tab> ',
+        F1 = '<F1>',
+        F2 = '<F2>',
+        F3 = '<F3>',
+        F4 = '<F4>',
+        F5 = '<F5>',
+        F6 = '<F6>',
+        F7 = '<F7>',
+        F8 = '<F8>',
+        F9 = '<F9>',
+        F10 = '<F10>',
+        F11 = '<F11>',
+        F12 = '<F12>',
+      },
+    },
+
+    -- Document existing key chains
+    --- You can add any mappings here, or use `require('which-key').add()` later
+    ---@type wk.Spec
+    spec = {
+      { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+      { '<leader>d', group = '[D]ocument' },
+      { '<leader>r', group = '[R]ename' },
+      { '<leader>s', group = '[S]earch' },
+      { '<leader>w', group = '[W]orkspace' },
+      { '<leader>t', group = '[T]oggle' },
+      { '<leader>h', group = 'Git [H]unk, [H]arpoon', mode = { 'n', 'v' } },
+      { "<C-S-K>", desc = "Show signature help" },
+      { "<S-K>", desc = "Show information" },
+    },
+
+    -- Appearance presets
+    ---@type false | "classic" | "modern" | "helix"
+    preset = "classic",
+
     ---@param mapping wk.Mapping
     filter = function(mapping)
       -- example to exclude mappings without a description
       -- return mapping.desc and mapping.desc ~= ""
       return true
     end,
-
-    --- You can add any mappings here, or use `require('which-key').add()` later
-    ---@type wk.Spec
-    spec = {
-      { "<C-S-K>", desc = "Show signature help" },
-      { "<S-K>", desc = "Show information" },
-    },
 
     -- show a warning when issues were detected with your mappings
     notify = true,
@@ -105,7 +151,7 @@ return {
     --- * mod: special modifier keys last
     --- * manual: the order the mappings were added
     --- * case: lower-case first
-    sort = { "case", "local", "order", "group", "alphanum", "mod" },
+    sort = { "local", "order", "group", "alphanum", "mod", "case" },
 
     ---@type number|fun(node: wk.Node):boolean?
     expand = 1, -- expand groups when <= n mappings
@@ -151,36 +197,36 @@ return {
       -- When `false`, it will use `WhichKeyIcon` instead
       colors = true,
       -- used by key format
-      keys = {
-        Up = " ",
-        Down = " ",
-        Left = " ",
-        Right = " ",
-        C = "󰘴 ", -- ctrl
-        M = "󰘵 ", -- alt
-        D = "󰘳 ", -- command
-        S = "󰘶 ", -- shift
-        CR = "󰌑 ",
-        Esc = "󱊷 ",
-        ScrollWheelDown = "󱕐 ",
-        ScrollWheelUp = "󱕑 ",
-        NL = "󰌑 ",
-        BS = "󰁮",
-        Space = "󱁐 ",
-        Tab = "󰌒 ",
-        F1 = "󱊫",
-        F2 = "󱊬",
-        F3 = "󱊭",
-        F4 = "󱊮",
-        F5 = "󱊯",
-        F6 = "󱊰",
-        F7 = "󱊱",
-        F8 = "󱊲",
-        F9 = "󱊳",
-        F10 = "󱊴",
-        F11 = "󱊵",
-        F12 = "󱊶",
-      },
+      -- keys = {
+      --   Up = " ",
+      --   Down = " ",
+      --   Left = " ",
+      --   Right = " ",
+      --   C = "󰘴 ", -- ctrl
+      --   M = "󰘵 ", -- alt
+      --   D = "󰘳 ", -- command
+      --   S = "󰘶 ", -- shift
+      --   CR = "󰌑 ",
+      --   Esc = "󱊷 ",
+      --   ScrollWheelDown = "󱕐 ",
+      --   ScrollWheelUp = "󱕑 ",
+      --   NL = "󰌑 ",
+      --   BS = "󰁮",
+      --   Space = "󱁐 ",
+      --   Tab = "󰌒 ",
+      --   F1 = "󱊫",
+      --   F2 = "󱊬",
+      --   F3 = "󱊭",
+      --   F4 = "󱊮",
+      --   F5 = "󱊯",
+      --   F6 = "󱊰",
+      --   F7 = "󱊱",
+      --   F8 = "󱊲",
+      --   F9 = "󱊳",
+      --   F10 = "󱊴",
+      --   F11 = "󱊵",
+      --   F12 = "󱊶",
+      -- },
     },
 
     show_help = true, -- show a help message in the command line for using WhichKey

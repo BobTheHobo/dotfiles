@@ -3,9 +3,18 @@
 -- Keymaps for better default experience
 
 -- For the options (last {} in keymap.set):
--- "desc=" -> Describes the function for which-key.nvim
--- "silent=" -> Executes without showing function in statusline
--- "expr=" -> Executes the return of a function
+--   "desc=" -> Describes the function for which-key.nvim
+--   "silent=" -> Executes without showing function in statusline
+--   "expr=" -> Executes the return of a function
+--
+-- Modes
+--    "n" - Normal
+--    "i" - Insert
+--    "v" - Visual
+--    "x" - Visual Block
+--    "t" - Terminal
+--    "c" - Command (:)
+--    "o" - Operator Pending (When an action waits for an "operator" on certain keymaps)
 
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
