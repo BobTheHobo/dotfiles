@@ -39,10 +39,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -63,6 +60,11 @@ if [ -n "$force_color_prompt" ]; then
     else
 	color_prompt=
     fi
+fi
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # get current git branch
@@ -151,11 +153,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Nvim paths...
+# Potential nvim paths...
 export PATH="$PATH:/opt/nvim/"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Path for scripts
 export PATH="$PATH:/bin"
+
+alias vim="nvim
 
 if command -v /home/linuxbrew/.linuxbrew/bin/brew &>/dev/null; then 
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
