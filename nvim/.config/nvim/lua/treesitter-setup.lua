@@ -6,21 +6,25 @@ vim.defer_fn(function()
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
-    -- Ion't istall parsers synchronously
+    -- Don't istall parsers synchronously
     sync_install = false,
 
     -- Autoinstall languages that are not installed.
     auto_install = true,
 
-    highlight = { enable = true },
-    indent = { enable = true },
+    highlight = {
+      -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+      --  If you are experiencing weird indenting issues, add the language to
+      --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+      enable = true,
+      additional_vim_regex_highlighting = { 'ruby' },
+    },
+    indent = { enable = true, disable = {'ruby'} },
     incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = '<S-CR>',
         node_incremental = '<S-CR>',
-        scope_incremental = '<c-s>',
-        node_decremental = '<M-space>',       
       },
     },
     textobjects = {

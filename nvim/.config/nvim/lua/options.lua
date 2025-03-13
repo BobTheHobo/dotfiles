@@ -16,17 +16,23 @@ vim.o.expandtab = true    -- expands tab into spaces
 -- Set highlight on search
 vim.o.hlsearch = false
 
--- Make relative line numbers default
 vim.wo.number = true
+-- Make relative line numbers default
 vim.wo.relativenumber = true
+
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -43,6 +49,8 @@ vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.updatetime = 250
+
+-- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -57,11 +65,26 @@ vim.o.splitbelow = true;
 -- Set splits to right of current window
 vim.o.splitright = true
 
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 -- Sets powershell to be default shell instead of cmd for windows
 local sysname = vim.loop.os_uname().sysname
 if sysname == "Windows" then
   vim.o.shell = "powershell.exe"
 end
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+-- vim.opt.scrolloff = 10
 
 -- Sets conceal level to 1 for obsidian.nvim to render checkboxes and other UI elements correctly
 vim.o.conceallevel = 2

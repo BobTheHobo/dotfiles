@@ -37,6 +37,12 @@ stow scripts
 chmod +x tmux_sessionizer tmux_windowizer
 ```
 
+Also using `autodarkmode-wsl` scripting to sync Windows' theme with WSL and Nvim. If you don't want this functionality (i.e., you're not on Windows), you can skip this step. 
+
+```bash
+git submodule update --init
+```
+
 ### Tmux
 
 ```shell
@@ -45,7 +51,7 @@ stow tmux
 tmux
 ```
 
-#### Install TPM and plugins
+#### Install Tmux Plugin Manager(TPM) and plugins
 
 1. Clone [TPM](https://github.com/tmux-plugins/tpm) into `~/dotfiles/.tmux/plugins`
 2. Install plugins by opening `tmux` and running `<prefix>I`

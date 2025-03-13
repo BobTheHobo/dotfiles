@@ -1,8 +1,9 @@
 # ignore directory where tmux plugins are installed
-tmux/.tmux/plugins/*
+tmux/.config/tmux/.tmux/plugins/*
 
 # except a .gitkeep so git will keep the folder structure
-!tmux/.tmux/plugins/.gitkeep
+# !tmux/.config/tmux/.tmux/plugin/.tmux/plugins/
+!tmux/.config/tmux/.tmux/plugins/.gitkeep
 
 # env
 .env

@@ -19,5 +19,5 @@ vim.keymap.set("n", "<leader>fo", "<cmd>TodoTelescope cwd=./ keywords=TODO,FIX,E
 return {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  opts = {}
+  opts = { signs = false }
 }
