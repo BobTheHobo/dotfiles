@@ -151,6 +151,7 @@ export NVM_DIR="$HOME/.nvm"
 # Nvim paths...
 export PATH="$PATH:/opt/nvim/"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 # Path for scripts
 export PATH="$PATH:/bin"
 
@@ -161,3 +162,5 @@ elif command -v /bin/brew &>/dev/null; then
 else
     echo "Homebrew is not installed."
 fi
+
+# export PATH="$PATH:/"
