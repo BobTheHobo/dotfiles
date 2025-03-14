@@ -143,10 +143,10 @@ require('lazy').setup({
     config = function()
       -- this line is required to set onedark default theme to light (see #34 @ github)
       -- DO NOT REMOVE THIS LINE, WILL BREAK CURSOR COLORS
-      vim.o.background = "light"
+      -- vim.o.background = "light"
 
       require("onedark").setup {
-        style = 'warmer',
+        style = 'light',
         transparent = true,
 
         --toggle theme style--
