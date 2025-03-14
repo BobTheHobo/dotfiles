@@ -160,7 +160,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Path for scripts
 export PATH="$PATH:/bin"
 
-alias vim="nvim
+alias vim="nvim"
 
 if command -v /home/linuxbrew/.linuxbrew/bin/brew &>/dev/null; then 
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

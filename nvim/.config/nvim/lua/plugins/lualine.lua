@@ -11,7 +11,7 @@ return {
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
         -- 'NvimTree', 'undotree',
-        winbar = {'aerial', "NvimTree", "undotree", "oil"}
+        -- winbar = {'aerial', "NvimTree", "undotree", "oil"}
       },
       always_show_tabline = false
     },
