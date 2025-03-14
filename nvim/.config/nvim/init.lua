@@ -11,7 +11,11 @@ vim.g.have_nerd_font = true
 vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 
+-- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- set color overrides before colorscheme is set
+require 'colors'
 
 -- Install lazy.nvim
 require 'lazy-bootstrap'
