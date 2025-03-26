@@ -2,11 +2,10 @@
 return {
   'nvim-lualine/lualine.nvim',
   -- See `:help lualine.txt`
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons', 'navarasu/onedark.nvim' },
   opts = {
     options = {
       icons_enabled = true,
-      theme = 'onedark',
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
@@ -67,4 +66,18 @@ return {
     },
     extensions = {"aerial", "fugitive", "lazy", "mason", "nvim-tree", "oil"},
   },
+  config = function()
+
+    -- Make lualine transparent in middle
+    local auto = require "lualine.themes.auto"
+    local lualine_modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }
+
+    for _, field in ipairs(lualine_modes) do
+      if auto[field] and auto[field].c then
+        auto[field].c.bg = nil
+      end
+    end
+
+    require("lualine").setup( { options = { theme = auto } } )
+  end
 }
