@@ -138,35 +138,35 @@ require('lazy').setup({
     },
   },
 
-  {
-  --   -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    opts = {
-    },
-    config = function()
-      -- this line is required to set onedark default theme to light (see #34 @ github)
-      -- DO NOT REMOVE THIS LINE, WILL BREAK CURSOR COLORS
-      -- vim.o.background = "light"
-
-      require("onedark").setup {
-        style = 'light',
-        transparent = true,
-
-        --toggle theme style--
-        toggle_style_key = "<leader>pp",
-        toggle_style_list = { 'warmer', 'light' },
-        -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
-
-        -- Lualine options --
-        lualine = {
-          transparent = true, -- lualine center bar transparency
-        },
-
-      }
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
+  -- {
+  -- --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   opts = {
+  --   },
+  --   config = function()
+  --     -- this line is required to set onedark default theme to light (see #34 @ github)
+  --     -- DO NOT REMOVE THIS LINE, WILL BREAK CURSOR COLORS
+  --     -- vim.o.background = "light"
+  --
+  --     require("onedark").setup {
+  --       style = 'darker',
+  --       transparent = true,
+  --
+  --       --toggle theme style--
+  --       toggle_style_key = "<leader>pp",
+  --       toggle_style_list = { 'light', 'warmer', 'darker' },
+  --       -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
+  --
+  --       -- Lualine options --
+  --       lualine = {
+  --         transparent = true, -- lualine center bar transparency
+  --       },
+  --
+  --     }
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
   -- {
   --   "ellisonleao/gruvbox.nvim",
   --   priority = 1000,
@@ -178,6 +178,14 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'gruvbox'
   --   end
   -- },
+  {
+    'kartikp10/noctis.nvim',
+    dependencies = { 'rktjmp/lush.nvim'},
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'noctis'
+    end
+  },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
