@@ -12,6 +12,7 @@ I can probably automate this someday...
   - gh (Github CLI)
   - stow
   - fzf
+  - rg (For telescope)
 - CaskaydiaMono Nerd Font (Install on Windows)
   - (Can replace with Nerd font of your choice)
 

@@ -4,44 +4,12 @@
     "actions": 
     [
         {
-            "command": "unbound",
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+minus"
-        },
-        {
-            "command": "unbound",
-            "keys": "enter"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+insert"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+numpad_minus"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+plus"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+enter"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+space"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+shift+f"
+            "command": 
+            {
+                "action": "adjustFontSize",
+                "delta": 1
+            },
+            "id": "User.adjustFontSize.E04D5229"
         },
         {
             "command": 
@@ -64,8 +32,7 @@
                 "action": "sendInput",
                 "input": "\u001b[13;2u"
             },
-            "id": "User.sendInput.8882FD6D",
-            "keys": "shift+enter"
+            "id": "User.sendInput.8882FD6D"
         },
         {
             "command": 
@@ -73,8 +40,15 @@
                 "action": "sendInput",
                 "input": "\u001b[13;5u"
             },
-            "id": "User.sendInput.F8A79DCB",
-            "keys": "ctrl+enter"
+            "id": "User.sendInput.F8A79DCB"
+        },
+        {
+            "command": 
+            {
+                "action": "adjustFontSize",
+                "delta": -1
+            },
+            "id": "User.adjustFontSize.E2698FAA"
         },
         {
             "command": "paste",
@@ -83,29 +57,10 @@
         {
             "command": 
             {
-                "action": "adjustFontSize",
-                "delta": -1
-            },
-            "id": "User.adjustFontSize.E2698FAA",
-            "keys": "ctrl+shift+minus"
-        },
-        {
-            "command": 
-            {
-                "action": "adjustFontSize",
-                "delta": 1
-            },
-            "id": "User.adjustFontSize.E04D5229",
-            "keys": "ctrl+shift+plus"
-        },
-        {
-            "command": 
-            {
                 "action": "sendInput",
                 "input": "\u0013f"
             },
-            "id": "User.sendInput.FA8E7954",
-            "keys": "ctrl+f"
+            "id": "User.sendInput.FA8E7954"
         }
     ],
     "alwaysShowNotificationIcon": true,
@@ -114,6 +69,69 @@
     "copyOnSelect": false,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "disableAnimations": true,
+    "keybindings": 
+    [
+        {
+            "id": null,
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "User.sendInput.FA8E7954",
+            "keys": "ctrl+f"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+numpad_minus"
+        },
+        {
+            "id": null,
+            "keys": "enter"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+v"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+minus"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+plus"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+insert"
+        },
+        {
+            "id": null,
+            "keys": "alt+enter"
+        },
+        {
+            "id": null,
+            "keys": "alt+space"
+        },
+        {
+            "id": "User.sendInput.8882FD6D",
+            "keys": "shift+enter"
+        },
+        {
+            "id": "User.sendInput.F8A79DCB",
+            "keys": "ctrl+enter"
+        },
+        {
+            "id": "User.adjustFontSize.E2698FAA",
+            "keys": "ctrl+shift+minus"
+        },
+        {
+            "id": "User.adjustFontSize.E04D5229",
+            "keys": "ctrl+shift+plus"
+        }
+    ],
     "minimizeToNotificationArea": false,
     "newTabMenu": 
     [
@@ -138,7 +156,7 @@
                 "face": "CaskaydiaMono Nerd Font Mono"
             },
             "intenseTextStyle": "all",
-            "opacity": 85,
+            "opacity": 30,
             "useAcrylic": false
         },
         "list": 
@@ -154,7 +172,8 @@
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
-                "name": "Windows PowerShell"
+                "name": "Windows PowerShell",
+                "opacity": 30
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
