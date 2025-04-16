@@ -269,7 +269,7 @@ return {
     end,
 
     setup = {
-      eslint = function() -- Eslint Autoformat
+      -- eslint = function() -- Eslint Autoformat
         -- vim.api.nvim_create_autocmd("BufWritePre", {
         --   callback = function(event)
         --     local client = vim.lsp.get_clients({ bufnr = event.buf, name = "eslint" })[1]
@@ -281,7 +281,7 @@ return {
         --     end
         --   end,
         -- })
-      end,
+      -- end,
     },
   },
   -- Typescript lsp
