@@ -1,12 +1,14 @@
 {
-  "$schema": "https://github.com/glzr-io/zebar/raw/v2.4.0/resources/settings-schema.json",
+  "$schema": "https://github.com/glzr-io/zebar/raw/v3.1.1/resources/settings-schema.json",
   "startupConfigs": [
     {
-      "path": "with-glazewm\\with-glazewm.html",
+      "pack": "with-glazewm",
+      "widget": "with-glazewm_html",
       "preset": "default"
     },
     {
-      "path": "with-glazewm\\with-glazewm.zebar.json",
+      "pack": "with-glazewm",
+      "widget": "with-glazewm",
       "preset": "default"
     }
   ]
