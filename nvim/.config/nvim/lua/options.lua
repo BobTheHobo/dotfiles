@@ -5,6 +5,9 @@
 -- vim.o.winbar = "%=%{ObsessionStatus()} %m %f %y" -- Uses same items as statusline (%= -> right align, %m -> shows modified, %f -> show file, %y is filetype)
 -- vim.o.winbar = "%=%{ObsessionStatus()}"
 
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
 -- tab settings
 vim.o.softtabstop = 2     -- how many columns pressing or deleting tab is worth
 vim.o.tabstop = 2         -- how many columns of whitespace \t (tab) character is worth
@@ -78,10 +81,10 @@ end
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
--- vim.opt.scrolloff = 10
+vim.opt.scrolloff = 10
 
 -- Sets conceal level to 1 for obsidian.nvim to render checkboxes and other UI elements correctly
 vim.o.conceallevel = 2
@@ -100,3 +103,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.o.confirm = true

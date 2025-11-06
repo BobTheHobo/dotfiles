@@ -8,3 +8,6 @@ tmux/.config/tmux/plugins/*
 
 # env
 .env
+
+# zebar error log
+errors.log

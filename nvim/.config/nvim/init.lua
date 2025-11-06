@@ -11,9 +11,6 @@ vim.g.have_nerd_font = true
 vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-
 -- set color overrides before colorscheme is set
 require 'colors'
 
@@ -32,6 +29,9 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+
+  -- Better repeats
+  'tpope/vim-repeat',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -191,6 +191,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
+  -- Check 'telescope-setup' for more config
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -229,10 +230,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  { -- Better repeats
-    "tpope/vim-repeat"
-  },
-
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   {
     import = "plugins"
@@ -253,6 +250,7 @@ require('lazy').setup({
     },
   },
   {
+    -- More configuration found in 'lsp-setup'
     require 'lsp-setup'
   }
 
