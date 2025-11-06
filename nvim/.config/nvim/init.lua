@@ -24,6 +24,10 @@ require 'lazy-bootstrap'
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
+
+  -- Theme --
+  require 'themes',
+
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
@@ -92,57 +96,6 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  -- --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   opts = {
-  --   },
-  --   config = function()
-  --     -- this line is required to set onedark default theme to light (see #34 @ github)
-  --     -- DO NOT REMOVE THIS LINE, WILL BREAK CURSOR COLORS
-  --     -- vim.o.background = "light"
-  --
-  --     require("onedark").setup {
-  --       style = 'darker',
-  --       transparent = true,
-  --
-  --       --toggle theme style--
-  --       toggle_style_key = "<leader>pp",
-  --       toggle_style_list = { 'light', 'warmer', 'darker' },
-  --       -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
-  --
-  --       -- Lualine options --
-  --       lualine = {
-  --         transparent = true, -- lualine center bar transparency
-  --       },
-  --
-  --     }
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("gruvbox").setup({
-  --       terminal_colors = true,
-  --       transparent_mode = true,
-  --     })
-  --     vim.cmd.colorscheme 'gruvbox'
-  --   end
-  -- },
-
-  {
-    'kartikp10/noctis.nvim',
-    dependencies = { 'rktjmp/lush.nvim'},
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'noctis'
-    end
-  },
-
-
   -- Fuzzy Finder (files, lsp, etc)
   -- Check 'telescope-setup' for more config
   {
@@ -199,9 +152,7 @@ require('lazy').setup({
 
   -- Main LSP configuration found in 'lsp-setup'
   -- Don't move from here...
-  {
-    require 'lsp-setup'
-  },
+  require 'lsp-setup',
 
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   {
