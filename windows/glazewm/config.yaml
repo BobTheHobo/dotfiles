@@ -163,7 +163,8 @@ window_rules:
   - commands: ["move --workspace 1"]
     match:
       # Move browsers to workspace 1.
-      - window_process: { regex: "msedge|brave|chrome" }
+      # - window_process: { regex: "msedge|brave" }
+      - window_process: { regex: "msedge|brave" }
   - commands: ["move --workspace 2"]
     match:
       # Move obsidian to workspace 2
