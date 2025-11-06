@@ -36,6 +36,9 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- "gc" to comment visual regions/lines
+  'numToStr/Comment.nvim',
+
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -53,88 +56,39 @@ require('lazy').setup({
   --            })
   --        end,
   --    }
+
+  -- Autocompletion
   {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
+    -- Main configuration is inside 'cmp-setup'
+    'saghen/blink.cmp',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      -- build = (function()
-      --   -- Build Step is needed for regex support in snippets.
-      --   -- This step is not supported in many windows environments.
-      --   -- Remove the below condition to re-enable on windows.
-      --   if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-      --     return
-      --   end
-      --   return 'make install_jsregexp'
-      -- end)(),
-      dependencies = {
-        -- `friendly-snippets` contains a variety of premade snippets.
-        --    See the README about individual language/framework/plugin snippets:
-        --    https://github.com/rafamadriz/friendly-snippets
-        {
-          'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
+      -- Snippet Engine
+      {
+        'L3MON4D3/LuaSnip',
+        version = '2.*',
+        build = (function()
+          -- Build Step is needed for regex support in snippets.
+          -- This step is not supported in many windows environments.
+          -- Remove the below condition to re-enable on windows.
+          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+            return
+          end
+          return 'make install_jsregexp'
+        end)(),
+        dependencies = {
+          -- `friendly-snippets` contains a variety of premade snippets.
+          --    See the README about individual language/framework/plugin snippets:
+          --    https://github.com/rafamadriz/friendly-snippets
+          -- {
+          --   'rafamadriz/friendly-snippets',
+          --   config = function()
+          --     require('luasnip.loaders.from_vscode').lazy_load()
+          --   end,
+          -- },
         },
+        opts = {},
       },
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds other completion capabilities.
-      --  nvim-cmp does not ship with all sources by default. They are split
-      --  into multiple repos for maintenance purposes.
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-    },
-  },
-  {
-    -- Autocomplete for git
-    "petertriho/cmp-git",
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    opts = {},
-    init = function()
-      table.insert(require("cmp").get_config().sources, { name = "git" })
-    end
-  },
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
-          { buffer = bufnr, desc = 'Preview git hunk' })
-
-        -- don't override the built-in and fugitive keymaps
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then
-            return ']c'
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then
-            return '[c'
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-      end,
+      'folke/lazydev.nvim',
     },
   },
 
@@ -178,6 +132,7 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'gruvbox'
   --   end
   -- },
+
   {
     'kartikp10/noctis.nvim',
     dependencies = { 'rktjmp/lush.nvim'},
@@ -187,15 +142,13 @@ require('lazy').setup({
     end
   },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   -- Check 'telescope-setup' for more config
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
+    -- branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -221,20 +174,14 @@ require('lazy').setup({
     },
   },
 
+  -- Highlight, edit, and navigate code
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
   },
-
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  {
-    import = "plugins"
-  },
-
 
   -- LSP Plugins
   {
@@ -249,10 +196,17 @@ require('lazy').setup({
       },
     },
   },
+
+  -- Main LSP configuration found in 'lsp-setup'
+  -- Don't move from here...
   {
-    -- More configuration found in 'lsp-setup'
     require 'lsp-setup'
-  }
+  },
+
+  -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+  {
+    import = "plugins"
+  },
 
 },
   -- Stop lazy from notifying every time a change is made
@@ -271,5 +225,5 @@ require 'telescope-setup'
 -- Treesitter --
 require 'treesitter-setup'
 
--- nvim-cmp --
+-- Completion (blink.cmp) --
 require 'cmp-setup'
