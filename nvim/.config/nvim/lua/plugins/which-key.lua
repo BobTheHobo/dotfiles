@@ -5,9 +5,13 @@ return {
   opts = {
 
     -- Delay before showing the popup. Can be a number or a function that returns a number.
+    -- If the keymap is associated with a plugin, trigger it instantly, otherwise wait 200 ms
     ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
     delay = function(ctx)
-      return ctx.plugin and 0 or 200
+      -- return ctx.plugin and 0 or 200
+      --
+      -- Gonna try using 0 delay for everything and see how that feels
+      return 0
     end,
 
     icons = {
